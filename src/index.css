@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: ui-monospace;
+
+}
+
+code {
+  /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace; */
+    font-family: ui-monospace;
+
+}
+.div_img{
+  background-image: url(../src/Assets/pexels-pixabay-209831.jpg);
+  background-size: cover;
+  border-radius: 1rem;
+}
+.hum,.hum1{
+  /* border-color: beige; */
+  /* border-color: brown;
+  border: outset;
+  border-width: thick; */
+  /* border: 2px solid  gray; */
+  box-shadow: 1px 0px 10px -3px #3d6a6a;}
+.hum::after{
+  content: "";
+    position: absolute;
+    width: 2px;
+    height: 150px;
+    background-color:#334f5a;
+    top: 0px;
+    left: 220px;
+    margin-top: 10px;
+
+}
+/* //////////////////////////////////// */
+@keyframes progress {
+  0% { --percentage: 0; }
+  100% { --percentage: var(--value); }
+}
+
+@property --percentage {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+[role="progressbar"] {
+  --percentage: var(--value);
+  --primary: #9da6a5;
+  --secondary: #6c757d;
+  --size: 200px;
+  animation: progress 2s 0.5s forwards;
+  width: var(--size);
+  aspect-ratio: 2 / 1;
+  border-radius: 50% / 100% 100% 0 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+[role="progressbar"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(from 0.75turn at 50% 100%, var(--primary) calc(var(--percentage) * 1% / 2), var(--secondary) calc(var(--percentage) * 1% / 2 + 0.1%));
+  mask: radial-gradient(at 50% 100%, white 55%, transparent 55.5%);
+  mask-mode: alpha;
+  -webkit-mask: radial-gradient(at 50% 100%, #0000 55%, #000 55.5%);
+  -webkit-mask-mode: alpha;
+}
+
+[role="progressbar"]::after {
+
+  counter-reset: percentage var(--value);
+            content: counter(percentage) 'UV';
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: calc(var(--size) / 6);
+            color: #1f2327;
+}
+
